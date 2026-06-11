@@ -1,0 +1,37 @@
+name: ClaudeUI
+options:
+  bundleIdPrefix: com.khanh
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "15.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+
+targets:
+  ClaudeUI:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: ClaudeUI
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.khanh.ClaudeUI
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_ENTITLEMENTS: ClaudeUI/ClaudeUI.entitlements
+        INFOPLIST_FILE: ClaudeUI/Info.plist
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    info:
+      path: ClaudeUI/Info.plist
+      properties:
+        LSMinimumSystemVersion: "$(MACOSX_DEPLOYMENT_TARGET)"
+        NSHumanReadableDescription: "Claude Code Session Manager for macOS"
+        LSApplicationCategoryType: "public.app-category.developer-tools"
+        CFBundleDisplayName: "ClaudeUI"
+        NSPrincipalClass: "NSApplication"
