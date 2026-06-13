@@ -4,12 +4,18 @@ import SwiftUI
 struct ClaudeUIApp: App {
     @StateObject private var sessionService = SessionService()
     @StateObject private var processManager = ClaudeProcessManager()
+    @StateObject private var mcpService = MCPService()
+    @StateObject private var pluginService = PluginService()
+    @StateObject private var skillService = SkillService()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(sessionService)
                 .environmentObject(processManager)
+                .environmentObject(mcpService)
+                .environmentObject(pluginService)
+                .environmentObject(skillService)
         }
         .windowStyle(.titleBar)
         .windowToolbarStyle(.unified(showsTitle: true))

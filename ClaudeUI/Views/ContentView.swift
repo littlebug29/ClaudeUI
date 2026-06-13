@@ -1,44 +1,64 @@
 import SwiftUI
 
+enum AppMode: String, CaseIterable, Identifiable {
+    case sessions, mcp, plugins, skills
+    var id: String { rawValue }
+    var title: String {
+        switch self {
+        case .sessions: return "Sessions"
+        case .mcp: return "MCP"
+        case .plugins: return "Plugins"
+        case .skills: return "Skills"
+        }
+    }
+    var symbol: String {
+        switch self {
+        case .sessions: return "bubble.left.and.text.bubble.right"
+        case .mcp: return "server.rack"
+        case .plugins: return "puzzlepiece.extension"
+        case .skills: return "sparkles"
+        }
+    }
+}
+
 struct ContentView: View {
     @EnvironmentObject private var sessionService: SessionService
     @EnvironmentObject private var processManager: ClaudeProcessManager
 
+    @State private var mode: AppMode = .sessions
     @State private var selectedProject: ClaudeProject?
     @State private var selectedSession: ClaudeSession?
+    @State private var selectedMCPName: String?
+    @State private var selectedPluginId: String?
+    @State private var selectedSkillId: String?
     @State private var showSettings = false
     @State private var columnVisibility = NavigationSplitViewVisibility.all
 
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
-            SessionListView(
-                selectedProject: $selectedProject,
-                selectedSession: $selectedSession
-            )
-            .navigationSplitViewColumnWidth(min: 220, ideal: 260, max: 340)
+            VStack(spacing: 0) {
+                Picker("", selection: $mode) {
+                    ForEach(AppMode.allCases) { mode in
+                        Label(mode.title, systemImage: mode.symbol).tag(mode)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .labelStyle(.iconOnly)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 6)
+
+                Divider()
+                sidebar
+            }
+            .navigationSplitViewColumnWidth(min: 240, ideal: 280, max: 360)
             .toolbar {
                 ToolbarItem(placement: .automatic) {
-                    Button {
-                        Task { await sessionService.loadProjects() }
-                    } label: {
-                        Image(systemName: "arrow.clockwise")
-                    }
-                    .help("Refresh sessions")
-                }
-                ToolbarItem(placement: .automatic) {
-                    Button {
-                        showSettings = true
-                    } label: {
-                        Image(systemName: "gear")
-                    }
-                    .help("Settings")
+                    Button { showSettings = true } label: { Image(systemName: "gear") }
+                        .help("Settings")
                 }
             }
         } detail: {
-            ConversationView(
-                session: selectedSession,
-                project: selectedProject
-            )
+            detail
         }
         .navigationTitle("")
         .task {
@@ -63,7 +83,35 @@ struct ContentView: View {
         } message: {
             Text(processManager.lastError ?? "")
         }
-        .frame(minWidth: 700, minHeight: 500)
+        .frame(minWidth: 760, minHeight: 520)
+    }
+
+    @ViewBuilder
+    private var sidebar: some View {
+        switch mode {
+        case .sessions:
+            SessionListView(selectedProject: $selectedProject, selectedSession: $selectedSession)
+        case .mcp:
+            MCPListView(selectedName: $selectedMCPName)
+        case .plugins:
+            PluginBrowserView(selectedPluginId: $selectedPluginId)
+        case .skills:
+            SkillListView(selectedSkillId: $selectedSkillId)
+        }
+    }
+
+    @ViewBuilder
+    private var detail: some View {
+        switch mode {
+        case .sessions:
+            ConversationView(session: selectedSession, project: selectedProject)
+        case .mcp:
+            MCPDetailView(serverName: selectedMCPName)
+        case .plugins:
+            PluginDetailView(pluginId: selectedPluginId)
+        case .skills:
+            SkillDetailView(skillId: selectedSkillId)
+        }
     }
 }
 
