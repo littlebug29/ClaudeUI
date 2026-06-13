@@ -107,20 +107,27 @@ enum TerminalLauncher {
         } else {
             claudeCommand = "claude"
         }
+        try run(command: claudeCommand, workingDirectory: projectPath)
+    }
+
+    /// Runs an arbitrary command in a fresh Terminal window. Used for
+    /// interactive extension-management actions (e.g. `claude mcp add` that may
+    /// trigger an OAuth flow) which need a TTY.
+    static func run(command: String, workingDirectory: String?) throws {
+        let cdLine = workingDirectory.map { "cd \(escapeShellArg($0)) || exit 1\n" } ?? ""
 
         // A .command file opens in Terminal.app via LaunchServices without
         // needing Automation (Apple Events) permission. The trailing
-        // `exec $SHELL -l` keeps the window interactive after claude exits.
+        // `exec $SHELL -l` keeps the window interactive after the command exits.
         let scriptBody = """
         #!/bin/bash
-        cd \(escapeShellArg(projectPath)) || exit 1
-        clear
-        \(claudeCommand)
+        \(cdLine)clear
+        \(command)
         exec "$SHELL" -l
         """
 
         let scriptURL = FileManager.default.temporaryDirectory
-            .appendingPathComponent("claude-resume-\(UUID().uuidString).command")
+            .appendingPathComponent("claude-ui-\(UUID().uuidString).command")
 
         do {
             try scriptBody.write(to: scriptURL, atomically: true, encoding: .utf8)

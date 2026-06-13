@@ -8,37 +8,88 @@
 
 /* Begin PBXBuildFile section */
 		07917D8FF4E89D08824871C8 /* ClaudeSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4584D127D7163FE302C1823B /* ClaudeSession.swift */; };
-		1CB4DE692FDB0B5E001162F9 /* TerminalLauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4DE682FDB0B5E001162F9 /* TerminalLauncherView.swift */; };
+		11282A794A0DEFC3B4496F52 /* ClaudeCLI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24164DD80CABDD5485B8A40 /* ClaudeCLI.swift */; };
 		283DFEEE6FE3FFDE069C2753 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BEAB6539825A6FD3FB85C1 /* ConversationView.swift */; };
+		29C436420B8CB3E8C96613DF /* MCPListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 289B6E06E388620992F3BD7F /* MCPListView.swift */; };
+		2E1BA25B03162DE6E34FEBEA /* SecurityBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDBAB5F727F16B55A6E60FD /* SecurityBadge.swift */; };
+		2E37CBE3D85800A7B76F5A65 /* AddMarketplaceSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E087F8FC57D0464B41FB5921 /* AddMarketplaceSheet.swift */; };
+		31EEF0E3DB3F80EA9D5940AC /* PluginBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6678CC73AB536807A551AEF1 /* PluginBrowserView.swift */; };
+		34B24560A771B3B195357F69 /* SecurityScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1425505860B5D7DC23CD1E /* SecurityScanner.swift */; };
+		39C8B2C827E54C302C3AD443 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF012D0AEB326ACA36ACEB97 /* Skill.swift */; };
+		4449A9EDC0ED24FB69CFF2AD /* MCPServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9B4F26F3218E86783AFA23 /* MCPServer.swift */; };
+		58A3D65F029B0BCF2A89D575 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA94C2704AFA89013FBFB2 /* Plugin.swift */; };
+		5B53B77B8E5B35913B2FB9E8 /* SkillListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF523C6AF8FA4D66FA5B187C /* SkillListView.swift */; };
 		5E339466A15806F2EA1AC156 /* ClaudeProcessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601E4BEF9E4A603B2030809E /* ClaudeProcessManager.swift */; };
+		6F12C06D0BED320517A835ED /* SecurityScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF1118238839004C4B9317B /* SecurityScannerTests.swift */; };
+		73C854F2B28BF05AB210971B /* SkillService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EB7B58F49B88021899FCC /* SkillService.swift */; };
 		7427287E71C4B5104B979BBB /* MessageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38CEE37CEA76F14A80B8CB /* MessageBubbleView.swift */; };
 		891026D76A8D616047986F2C /* StreamParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC76C0699E538FF7040446BF /* StreamParser.swift */; };
 		91937208730D032BB23BDEAC /* ConversationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F053AC36B313FF952819D2 /* ConversationMessage.swift */; };
 		93424E77EEF097BF74660B50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9704902F40C9EE4B7A0F616A /* ContentView.swift */; };
+		93FEB420467407CFDBAC3B15 /* PluginDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE2A08ECCE1D81C840C79EF /* PluginDetailView.swift */; };
+		A7BF6A9E9B0123A14D6098B6 /* MCPDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BDD77F7C82DDBFDA0AE4C1 /* MCPDetailView.swift */; };
+		B04940173D1279872165E84E /* TerminalLauncherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BC01603229A0166FFF8FD7 /* TerminalLauncherView.swift */; };
+		BC74D2BCE247F80FD40FA38E /* ParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78D530760B4064EF4DE9C37 /* ParsingTests.swift */; };
+		CA17C37DE68A2935D1FC1954 /* MCPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BD4252EE21861966E5D673 /* MCPService.swift */; };
 		CDC52B2A25D567F8B5168920 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE43475D357D14E1B020C3 /* SessionService.swift */; };
+		D0F112CE073999938CEEF2E5 /* AddMCPServerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB25FECA20D1F2000BA9309 /* AddMCPServerSheet.swift */; };
 		D166242448E78DE1DC0977D8 /* ClaudeUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F3F27C71166CE018D4C9B1 /* ClaudeUIApp.swift */; };
+		D280621948AEAF20FA218EA7 /* SkillDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6604A0D3D3D92BA582CC7 /* SkillDetailView.swift */; };
 		D760DFF6B6A4E2535C26B8E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16B2490929AF3EFEC3E5DD30 /* Assets.xcassets */; };
+		DD190A108DCB029402574307 /* SecurityReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592A9C3AE5905594C813590D /* SecurityReport.swift */; };
 		ED05A4BBAE9E2AB8D7F172F2 /* SessionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B3B1B2B1E3DAFBA75767B3 /* SessionListView.swift */; };
 		F5F6F5AE1EBBCAE2E61C4F08 /* ClaudeProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876BD75D9887EAD70AE47610 /* ClaudeProject.swift */; };
+		FB5C760ED14FC616740D6659 /* PluginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F75991179B20BA57B2BE94DA /* PluginService.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		407928A5DBA08ED65A94CDF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B6BA7375DA1BFE91804F5A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A89FCF55E94D76A6E88AA86C;
+			remoteInfo = ClaudeUI;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		00744B192A8FEFA26B7D629D /* ClaudeUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClaudeUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04B3B1B2B1E3DAFBA75767B3 /* SessionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionListView.swift; sourceTree = "<group>"; };
+		04BA94C2704AFA89013FBFB2 /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
+		075EB7B58F49B88021899FCC /* SkillService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillService.swift; sourceTree = "<group>"; };
 		16B2490929AF3EFEC3E5DD30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1CB4DE682FDB0B5E001162F9 /* TerminalLauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalLauncherView.swift; sourceTree = "<group>"; };
+		289B6E06E388620992F3BD7F /* MCPListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPListView.swift; sourceTree = "<group>"; };
 		35BEAB6539825A6FD3FB85C1 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		3A9D4CB64568F4C5AB195B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3D38CEE37CEA76F14A80B8CB /* MessageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleView.swift; sourceTree = "<group>"; };
 		4584D127D7163FE302C1823B /* ClaudeSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeSession.swift; sourceTree = "<group>"; };
+		592A9C3AE5905594C813590D /* SecurityReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityReport.swift; sourceTree = "<group>"; };
 		601E4BEF9E4A603B2030809E /* ClaudeProcessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeProcessManager.swift; sourceTree = "<group>"; };
+		6678CC73AB536807A551AEF1 /* PluginBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginBrowserView.swift; sourceTree = "<group>"; };
+		6DB25FECA20D1F2000BA9309 /* AddMCPServerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMCPServerSheet.swift; sourceTree = "<group>"; };
+		7FE2A08ECCE1D81C840C79EF /* PluginDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginDetailView.swift; sourceTree = "<group>"; };
 		83F053AC36B313FF952819D2 /* ConversationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationMessage.swift; sourceTree = "<group>"; };
 		876BD75D9887EAD70AE47610 /* ClaudeProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeProject.swift; sourceTree = "<group>"; };
 		87DE43475D357D14E1B020C3 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
+		8C1425505860B5D7DC23CD1E /* SecurityScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityScanner.swift; sourceTree = "<group>"; };
 		93F3F27C71166CE018D4C9B1 /* ClaudeUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeUIApp.swift; sourceTree = "<group>"; };
 		9704902F40C9EE4B7A0F616A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9AD6604A0D3D3D92BA582CC7 /* SkillDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillDetailView.swift; sourceTree = "<group>"; };
+		9AE847C629ADC4C4E9042361 /* ClaudeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClaudeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4BC01603229A0166FFF8FD7 /* TerminalLauncherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminalLauncherView.swift; sourceTree = "<group>"; };
+		AD9B4F26F3218E86783AFA23 /* MCPServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPServer.swift; sourceTree = "<group>"; };
+		ADDBAB5F727F16B55A6E60FD /* SecurityBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityBadge.swift; sourceTree = "<group>"; };
+		AF012D0AEB326ACA36ACEB97 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		C78D530760B4064EF4DE9C37 /* ParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingTests.swift; sourceTree = "<group>"; };
 		C9492A2CCA3E9794EF5A18A5 /* ClaudeUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ClaudeUI.entitlements; sourceTree = "<group>"; };
+		CCF1118238839004C4B9317B /* SecurityScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityScannerTests.swift; sourceTree = "<group>"; };
+		D24164DD80CABDD5485B8A40 /* ClaudeCLI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeCLI.swift; sourceTree = "<group>"; };
+		D9BDD77F7C82DDBFDA0AE4C1 /* MCPDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPDetailView.swift; sourceTree = "<group>"; };
 		DC76C0699E538FF7040446BF /* StreamParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamParser.swift; sourceTree = "<group>"; };
+		E087F8FC57D0464B41FB5921 /* AddMarketplaceSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMarketplaceSheet.swift; sourceTree = "<group>"; };
+		E4BD4252EE21861966E5D673 /* MCPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPService.swift; sourceTree = "<group>"; };
+		EF523C6AF8FA4D66FA5B187C /* SkillListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillListView.swift; sourceTree = "<group>"; };
+		F75991179B20BA57B2BE94DA /* PluginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -48,8 +99,22 @@
 				876BD75D9887EAD70AE47610 /* ClaudeProject.swift */,
 				4584D127D7163FE302C1823B /* ClaudeSession.swift */,
 				83F053AC36B313FF952819D2 /* ConversationMessage.swift */,
+				AD9B4F26F3218E86783AFA23 /* MCPServer.swift */,
+				04BA94C2704AFA89013FBFB2 /* Plugin.swift */,
+				592A9C3AE5905594C813590D /* SecurityReport.swift */,
+				AF012D0AEB326ACA36ACEB97 /* Skill.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		065FFD756D3797944B66D7F2 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				E087F8FC57D0464B41FB5921 /* AddMarketplaceSheet.swift */,
+				6678CC73AB536807A551AEF1 /* PluginBrowserView.swift */,
+				7FE2A08ECCE1D81C840C79EF /* PluginDetailView.swift */,
+			);
+			path = Plugins;
 			sourceTree = "<group>";
 		};
 		07197DEC223DE2C36ABA5289 /* ClaudeUI */ = {
@@ -67,6 +132,16 @@
 			path = ClaudeUI;
 			sourceTree = "<group>";
 		};
+		287237FA93896BA31C3FA7E7 /* MCP */ = {
+			isa = PBXGroup;
+			children = (
+				6DB25FECA20D1F2000BA9309 /* AddMCPServerSheet.swift */,
+				D9BDD77F7C82DDBFDA0AE4C1 /* MCPDetailView.swift */,
+				289B6E06E388620992F3BD7F /* MCPListView.swift */,
+			);
+			path = MCP;
+			sourceTree = "<group>";
+		};
 		57D80C62776CF19183576DFE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,11 +150,33 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		66478C660B631CA9CF791020 /* ClaudeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6D6970DD9D2F392C2A494148 /* Services */,
+			);
+			path = ClaudeUITests;
+			sourceTree = "<group>";
+		};
+		6D6970DD9D2F392C2A494148 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C78D530760B4064EF4DE9C37 /* ParsingTests.swift */,
+				CCF1118238839004C4B9317B /* SecurityScannerTests.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		71487D85CE2ED8DDC89B4A11 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D24164DD80CABDD5485B8A40 /* ClaudeCLI.swift */,
 				601E4BEF9E4A603B2030809E /* ClaudeProcessManager.swift */,
+				E4BD4252EE21861966E5D673 /* MCPService.swift */,
+				F75991179B20BA57B2BE94DA /* PluginService.swift */,
+				8C1425505860B5D7DC23CD1E /* SecurityScanner.swift */,
 				87DE43475D357D14E1B020C3 /* SessionService.swift */,
+				075EB7B58F49B88021899FCC /* SkillService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -88,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				07197DEC223DE2C36ABA5289 /* ClaudeUI */,
+				66478C660B631CA9CF791020 /* ClaudeUITests */,
 				AAEDB78AB19454D2BA20C9A6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,8 +194,17 @@
 			isa = PBXGroup;
 			children = (
 				00744B192A8FEFA26B7D629D /* ClaudeUI.app */,
+				9AE847C629ADC4C4E9042361 /* ClaudeUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CE6721ADDF7ED42EFA70D29A /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				ADDBAB5F727F16B55A6E60FD /* SecurityBadge.swift */,
+			);
+			path = Security;
 			sourceTree = "<group>";
 		};
 		D0021B1FFA58AAFBAC557480 /* App */ = {
@@ -115,9 +222,22 @@
 				35BEAB6539825A6FD3FB85C1 /* ConversationView.swift */,
 				3D38CEE37CEA76F14A80B8CB /* MessageBubbleView.swift */,
 				04B3B1B2B1E3DAFBA75767B3 /* SessionListView.swift */,
-				1CB4DE682FDB0B5E001162F9 /* TerminalLauncherView.swift */,
+				A4BC01603229A0166FFF8FD7 /* TerminalLauncherView.swift */,
+				287237FA93896BA31C3FA7E7 /* MCP */,
+				065FFD756D3797944B66D7F2 /* Plugins */,
+				CE6721ADDF7ED42EFA70D29A /* Security */,
+				EF742CF440E114A530A6049B /* Skills */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		EF742CF440E114A530A6049B /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				9AD6604A0D3D3D92BA582CC7 /* SkillDetailView.swift */,
+				EF523C6AF8FA4D66FA5B187C /* SkillListView.swift */,
+			);
+			path = Skills;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +261,24 @@
 			productReference = 00744B192A8FEFA26B7D629D /* ClaudeUI.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FB89B2E7A8E74DDEAA81FD93 /* ClaudeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1127980A9192B2DA02BDF1CE /* Build configuration list for PBXNativeTarget "ClaudeUITests" */;
+			buildPhases = (
+				D2537F6AC9D690A90CD85310 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0E270BD2CB9966FAF16B795A /* PBXTargetDependency */,
+			);
+			name = ClaudeUITests;
+			packageProductDependencies = (
+			);
+			productName = ClaudeUITests;
+			productReference = 9AE847C629ADC4C4E9042361 /* ClaudeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -149,6 +287,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 1E270EAE1C0FBC97C9D811A0 /* Build configuration list for PBXProject "ClaudeUI" */;
 			developmentRegion = en;
@@ -165,6 +305,7 @@
 			projectRoot = "";
 			targets = (
 				A89FCF55E94D76A6E88AA86C /* ClaudeUI */,
+				FB89B2E7A8E74DDEAA81FD93 /* ClaudeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -185,22 +326,57 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0F112CE073999938CEEF2E5 /* AddMCPServerSheet.swift in Sources */,
+				2E37CBE3D85800A7B76F5A65 /* AddMarketplaceSheet.swift in Sources */,
+				11282A794A0DEFC3B4496F52 /* ClaudeCLI.swift in Sources */,
 				5E339466A15806F2EA1AC156 /* ClaudeProcessManager.swift in Sources */,
-				1CB4DE692FDB0B5E001162F9 /* TerminalLauncherView.swift in Sources */,
 				F5F6F5AE1EBBCAE2E61C4F08 /* ClaudeProject.swift in Sources */,
 				07917D8FF4E89D08824871C8 /* ClaudeSession.swift in Sources */,
 				D166242448E78DE1DC0977D8 /* ClaudeUIApp.swift in Sources */,
 				93424E77EEF097BF74660B50 /* ContentView.swift in Sources */,
 				91937208730D032BB23BDEAC /* ConversationMessage.swift in Sources */,
 				283DFEEE6FE3FFDE069C2753 /* ConversationView.swift in Sources */,
+				A7BF6A9E9B0123A14D6098B6 /* MCPDetailView.swift in Sources */,
+				29C436420B8CB3E8C96613DF /* MCPListView.swift in Sources */,
+				4449A9EDC0ED24FB69CFF2AD /* MCPServer.swift in Sources */,
+				CA17C37DE68A2935D1FC1954 /* MCPService.swift in Sources */,
 				7427287E71C4B5104B979BBB /* MessageBubbleView.swift in Sources */,
+				58A3D65F029B0BCF2A89D575 /* Plugin.swift in Sources */,
+				31EEF0E3DB3F80EA9D5940AC /* PluginBrowserView.swift in Sources */,
+				93FEB420467407CFDBAC3B15 /* PluginDetailView.swift in Sources */,
+				FB5C760ED14FC616740D6659 /* PluginService.swift in Sources */,
+				2E1BA25B03162DE6E34FEBEA /* SecurityBadge.swift in Sources */,
+				DD190A108DCB029402574307 /* SecurityReport.swift in Sources */,
+				34B24560A771B3B195357F69 /* SecurityScanner.swift in Sources */,
 				ED05A4BBAE9E2AB8D7F172F2 /* SessionListView.swift in Sources */,
 				CDC52B2A25D567F8B5168920 /* SessionService.swift in Sources */,
+				39C8B2C827E54C302C3AD443 /* Skill.swift in Sources */,
+				D280621948AEAF20FA218EA7 /* SkillDetailView.swift in Sources */,
+				5B53B77B8E5B35913B2FB9E8 /* SkillListView.swift in Sources */,
+				73C854F2B28BF05AB210971B /* SkillService.swift in Sources */,
 				891026D76A8D616047986F2C /* StreamParser.swift in Sources */,
+				B04940173D1279872165E84E /* TerminalLauncherView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D2537F6AC9D690A90CD85310 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC74D2BCE247F80FD40FA38E /* ParsingTests.swift in Sources */,
+				6F12C06D0BED320517A835ED /* SecurityScannerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0E270BD2CB9966FAF16B795A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A89FCF55E94D76A6E88AA86C /* ClaudeUI */;
+			targetProxy = 407928A5DBA08ED65A94CDF3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2A1B0CD791EA1C0E6C593E3F /* Release */ = {
@@ -258,6 +434,24 @@
 				SWIFT_VERSION = 5.9;
 			};
 			name = Release;
+		};
+		44BAF1870A18D9C50FC767BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.khanh.ClaudeUITests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClaudeUI.app/Contents/MacOS/ClaudeUI";
+			};
+			name = Debug;
 		};
 		492F723F6215BADA4DF7487E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -364,9 +558,36 @@
 			};
 			name = Debug;
 		};
+		96D05E31E41F4FE341D441AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.khanh.ClaudeUITests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClaudeUI.app/Contents/MacOS/ClaudeUI";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1127980A9192B2DA02BDF1CE /* Build configuration list for PBXNativeTarget "ClaudeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44BAF1870A18D9C50FC767BD /* Debug */,
+				96D05E31E41F4FE341D441AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		1E270EAE1C0FBC97C9D811A0 /* Build configuration list for PBXProject "ClaudeUI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
