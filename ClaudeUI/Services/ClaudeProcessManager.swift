@@ -15,8 +15,10 @@ final class ClaudeProcessManager: ObservableObject {
         UserDefaults.standard.string(forKey: "claudeExecutablePath") ?? Self.detectClaudePath()
     }
 
-    static func detectClaudePath() -> String {
+    nonisolated static func detectClaudePath() -> String {
+        let home = FileManager.default.homeDirectoryForCurrentUser.path
         let candidates = [
+            "\(home)/.local/bin/claude",
             "/opt/homebrew/bin/claude",
             "/usr/local/bin/claude",
             "/usr/bin/claude",
@@ -29,7 +31,7 @@ final class ClaudeProcessManager: ObservableObject {
         return "/opt/homebrew/bin/claude"
     }
 
-    private static func runWhichClaude() -> String? {
+    nonisolated private static func runWhichClaude() -> String? {
         let p = Process()
         p.executableURL = URL(fileURLWithPath: "/usr/bin/which")
         p.arguments = ["claude"]
