@@ -35,3 +35,25 @@ targets:
         LSApplicationCategoryType: "public.app-category.developer-tools"
         CFBundleDisplayName: "ClaudeUI"
         NSPrincipalClass: "NSApplication"
+
+  ClaudeUITests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: ClaudeUITests
+    dependencies:
+      - target: ClaudeUI
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.khanh.ClaudeUITests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  ClaudeUI:
+    build:
+      targets:
+        ClaudeUI: all
+    test:
+      targets:
+        - ClaudeUITests
