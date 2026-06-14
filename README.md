@@ -8,7 +8,7 @@ A native macOS app for browsing and resuming Claude Code sessions, and for manag
 
 ## Download
 
-**[ClaudeUI-v1.0.0.dmg](https://github.com/littlebug29/ClaudeUI/releases/tag/v1.0.0)** — macOS 14+
+**[ClaudeUI-v1.0.1.dmg](https://github.com/littlebug29/ClaudeUI/releases/tag/v1.0.1)** — macOS 14+
 
 1. Open the DMG and drag **ClaudeUI** to your Applications folder
 2. **Right-click → Open** the first time (the app is ad-hoc signed, not notarized — Gatekeeper will otherwise block it)
