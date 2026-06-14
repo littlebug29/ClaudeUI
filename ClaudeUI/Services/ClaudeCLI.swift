@@ -108,6 +108,10 @@ struct ClaudeCLI {
             let process = Process()
             process.executableURL = URL(fileURLWithPath: execPath)
             process.arguments = args
+            // Use /tmp so claude doesn't walk up from the inherited working
+            // directory scanning for CLAUDE.md / project config, which triggers
+            // macOS TCC permission prompts for ~/Documents, ~/Music, etc.
+            process.currentDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory())
 
             var env = ProcessInfo.processInfo.environment
             let extraPaths = ["/opt/homebrew/bin", "/usr/local/bin", "/usr/bin", "/bin", "/usr/sbin", "/sbin"]
