@@ -3,12 +3,14 @@ import SwiftUI
 struct SessionListView: View {
     @EnvironmentObject private var sessionService: SessionService
     @EnvironmentObject private var processManager: ClaudeProcessManager
+    @EnvironmentObject private var nameStore: SessionNameStore
 
     @Binding var selectedProject: ClaudeProject?
     @Binding var selectedSession: ClaudeSession?
 
     @State private var searchText = ""
     @State private var expandedProjects: Set<String> = []
+    @State private var renamingSession: ClaudeSession?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -30,6 +32,14 @@ struct SessionListView: View {
             for p in projects where !expandedProjects.contains(p.id) {
                 expandedProjects.insert(p.id)
             }
+        }
+        .sheet(item: $renamingSession) { session in
+            RenameSessionSheet(
+                session: session,
+                currentName: nameStore.name(for: session.id) ?? "",
+                onSave: { nameStore.setName($0, for: session.id) },
+                onClear: { nameStore.removeName(for: session.id) }
+            )
         }
     }
 
@@ -126,11 +136,20 @@ struct SessionListView: View {
 
     @ViewBuilder
     private func sessionRow(session: ClaudeSession, project: ClaudeProject) -> some View {
+        let displayName = nameStore.name(for: session.id) ?? session.firstUserPrompt
         VStack(alignment: .leading, spacing: 4) {
-            Text(session.firstUserPrompt)
-                .font(.system(size: 13))
-                .lineLimit(2)
-                .fixedSize(horizontal: false, vertical: true)
+            HStack(spacing: 4) {
+                // Coral dot when a custom name is set
+                if nameStore.name(for: session.id) != nil {
+                    Circle()
+                        .fill(Color.accentColor)
+                        .frame(width: 5, height: 5)
+                }
+                Text(displayName)
+                    .font(.system(size: 13))
+                    .lineLimit(2)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
 
             HStack(spacing: 6) {
                 Text(session.relativeTimeString)
@@ -160,6 +179,31 @@ struct SessionListView: View {
             selectedSession = session
             processManager.currentSessionId = session.id
         }
+        .contextMenu {
+            Button {
+                renamingSession = session
+            } label: {
+                Label("Rename…", systemImage: "pencil")
+            }
+
+            if nameStore.name(for: session.id) != nil {
+                Button(role: .destructive) {
+                    nameStore.removeName(for: session.id)
+                } label: {
+                    Label("Clear custom name", systemImage: "xmark.circle")
+                }
+            }
+
+            Divider()
+
+            Button {
+                selectedProject = project
+                selectedSession = session
+                newSession(for: project)
+            } label: {
+                Label("New session in \(project.displayName)", systemImage: "plus")
+            }
+        }
     }
 
     private var filteredProjects: [ClaudeProject] {
@@ -173,7 +217,8 @@ struct SessionListView: View {
     private func filteredSessions(for project: ClaudeProject) -> [ClaudeSession] {
         guard !searchText.isEmpty else { return project.sessions }
         return project.sessions.filter { session in
-            session.firstUserPrompt.localizedCaseInsensitiveContains(searchText)
+            let displayName = nameStore.name(for: session.id) ?? session.firstUserPrompt
+            return displayName.localizedCaseInsensitiveContains(searchText)
         }
     }
 

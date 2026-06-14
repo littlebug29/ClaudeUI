@@ -7,6 +7,7 @@ struct ClaudeUIApp: App {
     @StateObject private var mcpService = MCPService()
     @StateObject private var pluginService = PluginService()
     @StateObject private var skillService = SkillService()
+    @StateObject private var nameStore = SessionNameStore()
 
     var body: some Scene {
         WindowGroup {
@@ -16,6 +17,7 @@ struct ClaudeUIApp: App {
                 .environmentObject(mcpService)
                 .environmentObject(pluginService)
                 .environmentObject(skillService)
+                .environmentObject(nameStore)
         }
         .windowStyle(.titleBar)
         .windowToolbarStyle(.unified(showsTitle: true))
@@ -39,6 +41,7 @@ struct ClaudeUIApp: App {
             MenuBarView()
                 .environmentObject(sessionService)
                 .environmentObject(processManager)
+                .environmentObject(nameStore)
         }
         .menuBarExtraStyle(.menu)
     }
@@ -47,6 +50,7 @@ struct ClaudeUIApp: App {
 struct MenuBarView: View {
     @EnvironmentObject private var sessionService: SessionService
     @EnvironmentObject private var processManager: ClaudeProcessManager
+    @EnvironmentObject private var nameStore: SessionNameStore
 
     var body: some View {
         let recent = sessionService.projects
@@ -64,7 +68,7 @@ struct MenuBarView: View {
                 } label: {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(session.firstUserPrompt)
+                            Text(nameStore.name(for: session.id) ?? session.firstUserPrompt)
                                 .lineLimit(1)
                             Text(session.relativeTimeString)
                                 .font(.caption)

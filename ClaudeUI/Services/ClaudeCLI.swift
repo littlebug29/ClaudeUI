@@ -99,6 +99,50 @@ struct ClaudeCLI {
         }
     }
 
+    /// Runs claude with `input` written to stdin. Used for one-shot prompts
+    /// such as session-name suggestion (`claude -p`).
+    func runWithStdin(args: [String], input: String) async throws -> Output {
+        let execPath = executablePath
+        let inputData = (input + "\n").data(using: .utf8) ?? Data()
+        return try await Task.detached(priority: .userInitiated) {
+            let process = Process()
+            process.executableURL = URL(fileURLWithPath: execPath)
+            process.arguments = args
+
+            var env = ProcessInfo.processInfo.environment
+            let extraPaths = ["/opt/homebrew/bin", "/usr/local/bin", "/usr/bin", "/bin", "/usr/sbin", "/sbin"]
+            let existing = env["PATH"].map { [$0] } ?? []
+            env["PATH"] = (extraPaths + existing).joined(separator: ":")
+            process.environment = env
+
+            let stdinPipe = Pipe()
+            let stdoutPipe = Pipe()
+            let stderrPipe = Pipe()
+            process.standardInput = stdinPipe
+            process.standardOutput = stdoutPipe
+            process.standardError = stderrPipe
+
+            do { try process.run() } catch {
+                throw CLIError.launchFailed(error.localizedDescription)
+            }
+
+            // Close stdin after writing so the child sees EOF.
+            stdinPipe.fileHandleForWriting.write(inputData)
+            stdinPipe.fileHandleForWriting.closeFile()
+
+            // Read both pipes before waitUntilExit to avoid pipe-buffer deadlock.
+            let outData = stdoutPipe.fileHandleForReading.readDataToEndOfFile()
+            let errData = stderrPipe.fileHandleForReading.readDataToEndOfFile()
+            process.waitUntilExit()
+
+            return Output(
+                stdout: String(data: outData, encoding: .utf8) ?? "",
+                stderr: String(data: errData, encoding: .utf8) ?? "",
+                exitCode: process.terminationStatus
+            )
+        }.value
+    }
+
     /// Builds a single shell command string (executable + escaped args) suitable
     /// for handing to `TerminalLauncher` when an action needs an interactive TTY.
     func terminalCommand(_ args: [String]) -> String {

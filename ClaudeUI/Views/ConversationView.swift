@@ -6,9 +6,11 @@ struct ConversationView: View {
     let project: ClaudeProject?
 
     @EnvironmentObject private var sessionService: SessionService
+    @EnvironmentObject private var nameStore: SessionNameStore
 
     @State private var messages: [ConversationMessage] = []
     @State private var scrollProxy: ScrollViewProxy?
+    @State private var showRename = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -46,6 +48,16 @@ struct ConversationView: View {
         .task(id: session?.id) {
             await loadMessages()
         }
+        .sheet(isPresented: $showRename) {
+            if let session {
+                RenameSessionSheet(
+                    session: session,
+                    currentName: nameStore.name(for: session.id) ?? "",
+                    onSave: { nameStore.setName($0, for: session.id) },
+                    onClear: { nameStore.removeName(for: session.id) }
+                )
+            }
+        }
     }
 
     private var displayMessages: [ConversationMessage] {
@@ -57,18 +69,37 @@ struct ConversationView: View {
 
     @ViewBuilder
     private func headerBar(session: ClaudeSession) -> some View {
+        let customName = nameStore.name(for: session.id)
+        let title = customName ?? session.firstUserPrompt
         VStack(spacing: 0) {
             HStack(spacing: 10) {
                 VStack(alignment: .leading, spacing: 2) {
-                    Text(project?.displayName ?? "Unknown Project")
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .lineLimit(1)
-                    Text("Session · \(session.relativeTimeString)")
+                    HStack(spacing: 6) {
+                        Text(title)
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .lineLimit(1)
+                        // Show pencil inline when a custom name is set
+                        if customName != nil {
+                            Image(systemName: "pencil.circle.fill")
+                                .font(.system(size: 13))
+                                .foregroundStyle(Color.accentColor.opacity(0.7))
+                                .onTapGesture { showRename = true }
+                        }
+                    }
+                    Text("\(project?.displayName ?? "Unknown Project") · \(session.relativeTimeString)")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
                 Spacer()
+
+                // Rename button
+                Button { showRename = true } label: {
+                    Image(systemName: "pencil")
+                        .font(.system(size: 13))
+                }
+                .buttonStyle(.plain)
+                .help("Rename session")
 
                 Button {
                     Task { await loadMessages() }
