@@ -82,17 +82,22 @@ struct SkillListView: View {
 
     private func row(_ skill: Skill) -> some View {
         let report = SecurityScanner.scan(skill: skill)
-        return VStack(alignment: .leading, spacing: 3) {
+        return VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 6) {
-                Text(skill.name).font(.system(size: 13, weight: .medium)).lineLimit(1)
+                Text(skill.name)
+                    .font(.system(size: 13, weight: .medium))
+                    .lineLimit(1)
                 Spacer()
                 if report.worstSeverity >= .warning {
                     SecurityBadge(severity: report.worstSeverity, compact: true)
                 }
             }
-            Text(skill.description).font(.caption).foregroundStyle(.tertiary).lineLimit(2)
+            Text(skill.description)
+                .font(.system(size: 11.5))
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
         }
-        .padding(.vertical, 2)
+        .padding(.vertical, 4)
         .tag(skill.id)
     }
 

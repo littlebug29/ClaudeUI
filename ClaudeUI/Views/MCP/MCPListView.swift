@@ -55,33 +55,54 @@ struct MCPListView: View {
 
     private func row(_ server: MCPServer) -> some View {
         let report = SecurityScanner.scan(mcp: server)
-        return VStack(alignment: .leading, spacing: 4) {
-            HStack(spacing: 6) {
-                Text(server.name).font(.system(size: 13, weight: .medium)).lineLimit(1)
+        let dotColor = statusColor(server.status)
+        return VStack(alignment: .leading, spacing: 5) {
+            HStack(spacing: 8) {
+                ZStack {
+                    Circle().fill(dotColor.opacity(0.18)).frame(width: 14, height: 14)
+                    Circle().fill(dotColor).frame(width: 8, height: 8)
+                }
+                Text(server.name)
+                    .font(.system(size: 13, weight: .medium))
+                    .foregroundStyle(.primary)
+                    .lineLimit(1)
                 Spacer()
                 if report.worstSeverity >= .warning {
                     SecurityBadge(severity: report.worstSeverity, compact: true)
                 }
+                Text(server.transport.rawValue.uppercased())
+                    .font(.system(size: 10, weight: .semibold))
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 5)
+                    .padding(.vertical, 2)
+                    .background(Color.primary.opacity(0.05))
+                    .clipShape(RoundedRectangle(cornerRadius: 4))
             }
-            HStack(spacing: 6) {
-                statusDot(server.status)
-                Text(server.status.label).font(.caption).foregroundStyle(.tertiary)
-                Spacer()
-                Text(server.transport.rawValue.uppercased()).font(.caption2).foregroundStyle(.quaternary)
-            }
+            Text(statusSubline(server))
+                .font(.system(size: 11.5))
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
+                .padding(.leading, 14)
         }
-        .padding(.vertical, 2)
+        .padding(.vertical, 4)
     }
 
-    private func statusDot(_ status: MCPServer.Status) -> some View {
-        let color: Color = {
-            switch status {
-            case .connected: return .green
-            case .needsAuth, .pending: return .orange
-            case .failed: return .red
-            case .unknown: return .secondary
-            }
-        }()
-        return Circle().fill(color).frame(width: 6, height: 6)
+    private func statusColor(_ status: MCPServer.Status) -> Color {
+        switch status {
+        case .connected: return Color(red: 0.239, green: 0.631, blue: 0.376)
+        case .failed: return Color(red: 0.839, green: 0.271, blue: 0.239)
+        case .needsAuth, .pending: return .orange
+        case .unknown: return Color.secondary
+        }
+    }
+
+    private func statusSubline(_ server: MCPServer) -> String {
+        switch server.status {
+        case .connected: return server.url ?? "Connected"
+        case .failed: return "Failed to connect"
+        case .needsAuth: return "Needs authentication"
+        case .pending: return "Pending approval"
+        case .unknown: return server.url ?? server.command ?? ""
+        }
     }
 }

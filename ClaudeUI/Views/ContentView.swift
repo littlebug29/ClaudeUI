@@ -37,15 +37,14 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView(columnVisibility: $columnVisibility) {
             VStack(spacing: 0) {
-                Picker("", selection: $mode) {
-                    ForEach(AppMode.allCases) { mode in
-                        Label(mode.title, systemImage: mode.symbol).tag(mode)
+                HStack(spacing: 4) {
+                    ForEach(AppMode.allCases) { tab in
+                        tabButton(for: tab)
                     }
                 }
-                .pickerStyle(.segmented)
-                .labelStyle(.iconOnly)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 6)
+                .padding(.horizontal, 10)
+                .padding(.top, 2)
+                .padding(.bottom, 10)
 
                 Divider()
                 sidebar
@@ -84,6 +83,24 @@ struct ContentView: View {
             Text(processManager.lastError ?? "")
         }
         .frame(minWidth: 760, minHeight: 520)
+    }
+
+    private func tabButton(for tab: AppMode) -> some View {
+        let isActive = mode == tab
+        return Button { mode = tab } label: {
+            VStack(spacing: 4) {
+                Image(systemName: tab.symbol)
+                    .font(.system(size: 15.5))
+                Text(tab.title)
+                    .font(.system(size: 11, weight: isActive ? .semibold : .medium))
+            }
+            .foregroundStyle(isActive ? Color.accentColor : Color(nsColor: .tertiaryLabelColor))
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 8)
+            .background(isActive ? Color.accentColor.opacity(0.13) : Color.clear)
+            .clipShape(RoundedRectangle(cornerRadius: 9))
+        }
+        .buttonStyle(.plain)
     }
 
     @ViewBuilder

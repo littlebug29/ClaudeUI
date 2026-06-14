@@ -70,22 +70,44 @@ struct PluginBrowserView: View {
 
     private func row(_ plugin: Plugin) -> some View {
         let report = SecurityScanner.scan(plugin: plugin, marketplaceIsOfficial: pluginService.isOfficial(plugin))
-        return HStack(spacing: 8) {
-            VStack(alignment: .leading, spacing: 3) {
-                Text(plugin.name).font(.system(size: 13, weight: .medium)).lineLimit(1)
-                Text(plugin.marketplace).font(.caption2).foregroundStyle(.tertiary).lineLimit(1)
+        let letter = String(plugin.name.prefix(1)).uppercased()
+        return HStack(spacing: 9) {
+            Text(letter)
+                .font(.system(size: 13, weight: .bold))
+                .foregroundStyle(Color.accentColor.opacity(0.85))
+                .frame(width: 28, height: 28)
+                .background(Color.accentColor.opacity(0.13))
+                .clipShape(RoundedRectangle(cornerRadius: 7))
+            VStack(alignment: .leading, spacing: 2) {
+                HStack(spacing: 5) {
+                    Text(plugin.name)
+                        .font(.system(size: 13, weight: .medium))
+                        .lineLimit(1)
+                    if plugin.installed {
+                        Image(systemName: "checkmark")
+                            .font(.system(size: 9, weight: .bold))
+                            .foregroundStyle(Color(red: 0.239, green: 0.631, blue: 0.376))
+                    }
+                    if plugin.installed && !plugin.enabled {
+                        Text("Off")
+                            .font(.system(size: 10, weight: .semibold))
+                            .foregroundStyle(.orange)
+                    }
+                }
+                Text("by \(plugin.marketplace)")
+                    .font(.system(size: 11.5))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
             }
             Spacer()
             if pluginService.busyPluginIds.contains(plugin.id) {
                 ProgressView().scaleEffect(0.5)
-            } else if plugin.installed && !plugin.enabled {
-                Text("Disabled").font(.caption2).foregroundStyle(.orange)
             }
             if report.worstSeverity >= .warning {
                 SecurityBadge(severity: report.worstSeverity, compact: true)
             }
         }
-        .padding(.vertical, 2)
+        .padding(.vertical, 4)
         .tag(plugin.id)
     }
 
